@@ -3,6 +3,10 @@ import { supabase } from "../supabaseClient";
 import fs from "fs";
 import path from "path";
 
+
+
+
+
 export const uploadPDF = async (req: Request, res: Response) => {
   try {
     const file = req.file;
@@ -16,6 +20,8 @@ if (!user_id) {
     const fileExt = path.extname(file.originalname);
     const fileName = `${Date.now()}_${file.originalname}`;
     const filePath = file.path;
+
+    
 
     // Upload to Supabase storage bucket "pdfs"
     const { data:uploadData, error:uploadError } = await supabase.storage
