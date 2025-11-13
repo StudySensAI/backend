@@ -20,7 +20,7 @@ const corsOptions: CorsOptions = {
 
 app.use(cors(corsOptions));
 
-app.use("/api", uploadRoutes);
+app.use("/api/v1/uploads", uploadRoutes);
 // app.use("/api/v1/auth", (req: Request, res: Response) => {
 //   res.send("Auth route working");
 // });
