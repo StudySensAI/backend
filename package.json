@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
-  
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only server.ts"
   },
@@ -17,7 +16,7 @@
     "express": "^5.1.0",
     "multer": "^2.0.2",
     "path": "^0.12.7",
-    "pdf-parse": "^2.4.5",
+    "pdf-parse": "^1.1.1",
     "react": "^19.2.0"
   },
   "devDependencies": {

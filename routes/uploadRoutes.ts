@@ -1,7 +1,7 @@
 import express from "express";
 import multer from "multer";
 import { uploadPDF } from "../controllers/uploadController";
-import { deleteUpload } from "../controllers/deleteUploadController";
+import { deleteUpload } from "../controllers/deleteUpload";
 import { generateDownloadUrl } from "../controllers/downloadController";
 
 

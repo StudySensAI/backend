@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import cors, { CorsOptions } from "cors";
 import path from "path";
 import uploadRoutes from "./routes/uploadRoutes";
+import dashboardRoutes from "./routes/dashboardRoutes";
 
 dotenv.config();
 
@@ -21,6 +22,7 @@ const corsOptions: CorsOptions = {
 app.use(cors(corsOptions));
 
 app.use("/api/v1/uploads", uploadRoutes);
+app.use("/api/v1/dashboard", dashboardRoutes);
 // app.use("/api/v1/auth", (req: Request, res: Response) => {
 //   res.send("Auth route working");
 // });
