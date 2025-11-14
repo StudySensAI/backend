@@ -37,11 +37,23 @@ export const uploadPDF = async (req: Request, res: Response) => {
 
 
     // Upload to Supabase storage bucket "pdfs"
-    const { data: uploadData, error: uploadError } = await supabase.storage
-      .from("pdfs")
-      .upload(fileName, fs.createReadStream(filePath), {
-        contentType: "application/pdf",
-      });
+    // const { data: uploadData, error: uploadError } = await supabase.storage
+    //   .from("pdfs")
+    //   .upload(fileName, fs.createReadStream(filePath), {
+    //     contentType: "application/pdf",
+    //   });
+    const fileBuffer = fs.readFileSync(filePath);
+
+const { data: uploadData, error: uploadError } = await supabase.storage
+  .from("pdfs")
+  .upload(fileName, fileBuffer, {
+    contentType: "application/pdf",
+  });
+
+if (uploadError) {
+  console.error("Supabase upload error:", uploadError);
+  return res.status(500).json({ error: uploadError.message });
+}
 
 //     // Remove local file
 //     fs.unlinkSync(filePath);
