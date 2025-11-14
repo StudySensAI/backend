@@ -4,6 +4,10 @@
   "description": "",
   "main": "dist/server.js",
   "type": "module",
+  "engines": {
+    "node": "18.x"
+  },
+
    "scripts": {
   "build": "tsc",
   "dev": "nodemon --watch \"./\" --ext ts --ignore dist --exec \"npm run build && node dist/server.js\"",

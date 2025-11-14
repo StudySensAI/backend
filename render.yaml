@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: studysensai-backend
+    runtime: node
+    repo: https://github.com/StudySensAI/backend
+    branch: main
+
+    envVars:
+      - key: NODE_VERSION
+        value: "18"
+
+    buildCommand: "npm install && npm run build"
+    startCommand: "node dist/server.js"
+
+    plan: free
