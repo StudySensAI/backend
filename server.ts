@@ -24,7 +24,7 @@ const corsOptions: CorsOptions = {
 };
 
 app.use(cors(corsOptions));
-app.options("*", cors(corsOptions)); // <-- Important for OAuth preflight
+app.options("/*", cors(corsOptions)); // <-- Important for OAuth preflight
 
 app.use(express.json());
 
