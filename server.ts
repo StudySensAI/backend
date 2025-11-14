@@ -15,18 +15,20 @@ dotenv.config();
 
 const app: Application = express();
 
-// Middleware to parse JSON
-app.use(express.json());
-
-// ✅ Setup CORS configuration
 const front_url=process.env.FRONT_URL
+// Middleware to parse JSON
 const corsOptions: CorsOptions = {
   origin:[ `${front_url}`,/\.vercel\.app$/], // fallback for safety
-  methods: ["GET", "POST", "PUT", "DELETE"],
+  methods: ["GET", "POST", "PUT", "DELETE","OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
 };
 
 app.use(cors(corsOptions));
+app.options("*", cors(corsOptions)); // <-- Important for OAuth preflight
+
+app.use(express.json());
+
+// ✅ Setup CORS configuration
 
 app.use("/api/v1/uploads", uploadRoutes);
 app.use("/api/v1/dashboard", dashboardRoutes);

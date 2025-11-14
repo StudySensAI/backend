@@ -10,12 +10,8 @@ dotenv.config();
 
 const URL=process.env.FRONT_URL
 const app = express();
-app.use(express.json());
-app.use(cors({
-  origin:[ `${URL}`,/\.vercel\.app$/],
-  credentials: true,
-}));
 
+app.use(express.json());
 const STATE_TTL_SECONDS = 60 * 10;
 const back_url= process.env.BACK_URL
 const PORT = parseInt(process.env.PORT || "3001", 10);
@@ -87,7 +83,8 @@ app.get("/oauth/callback", async (req: Request, res: Response): Promise<void> =>
     });
   const authUrl = notionOAuth.generateAuthUrl(state ||'');
     await notionOAuth.handleRedirect(fullUrl);
-        return res.redirect(`${back_url}/notion/success?connected=1`);
+        return res.redirect(`${URL}/notion/success?connected=1`);
+
 
 
 
