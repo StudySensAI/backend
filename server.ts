@@ -20,7 +20,7 @@ app.use(express.json());
 
 // ✅ Setup CORS configuration
 const corsOptions: CorsOptions = {
-  origin: process.env.CLIENT_URL || "*", // fallback for safety
+  origin: process.env.FRONT_URL || "*", // fallback for safety
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
 };
@@ -46,15 +46,16 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   console.error(err.message);
   res.status(500).json({ error: "Internal Server Error" });
 });
+const front_url=process.env.FRONT_URL
 app.use(cors({
-  origin: "http://localhost:3000",
+  origin: `${front_url}`,
   credentials: true,
 }));
 
 const STATE_TTL_SECONDS = 60 * 10;
-
+const back_url=process.env.BACK_URL
 const PORT = parseInt(process.env.PORT || "3001", 10);
-const REDIRECT_URL = process.env.REDIRECT_URL || `http://localhost:${PORT}/oauth/callback`;
+const REDIRECT_URL = process.env.REDIRECT_URL || `${back_url}/oauth/callback`;
 const SUPABASE = createClient(process.env.SUPABASE_URL!, process.env.SUPABASE_API_KEY!);
 app.use("/", notionStoreRoute);
 app.post("/oauth/start", async (req, res) => {
@@ -120,9 +121,10 @@ app.get("/oauth/callback", async (req: Request, res: Response): Promise<void> =>
       supabaseClient: SUPABASE
 
     });
+  
   const authUrl = notionOAuth.generateAuthUrl(state ||'');
     await notionOAuth.handleRedirect(fullUrl);
-        return res.redirect("http://localhost:3000/notion/success?connected=1");
+        return res.redirect(`${front_url}/notion/success?connected=1`);
 
 
 
