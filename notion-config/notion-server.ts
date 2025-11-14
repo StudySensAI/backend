@@ -12,7 +12,7 @@ const URL=process.env.FRONT_URL
 const app = express();
 app.use(express.json());
 app.use(cors({
-  origin: `${URL}`,
+  origin:[ `${URL}`,/\.vercel\.app$/],
   credentials: true,
 }));
 

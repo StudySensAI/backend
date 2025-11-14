@@ -48,7 +48,7 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
 });
 const front_url=process.env.FRONT_URL
 app.use(cors({
-  origin: `${front_url}`,
+  origin:[ `${front_url}`,/\.vercel\.app$/],
   credentials: true,
 }));
 
