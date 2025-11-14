@@ -19,8 +19,9 @@ const app: Application = express();
 app.use(express.json());
 
 // ✅ Setup CORS configuration
+const front_url=process.env.FRONT_URL
 const corsOptions: CorsOptions = {
-  origin: process.env.FRONT_URL || "*", // fallback for safety
+  origin:[ `${front_url}`,/\.vercel\.app$/], // fallback for safety
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
 };
@@ -46,11 +47,6 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   console.error(err.message);
   res.status(500).json({ error: "Internal Server Error" });
 });
-const front_url=process.env.FRONT_URL
-app.use(cors({
-  origin:[ `${front_url}`,/\.vercel\.app$/],
-  credentials: true,
-}));
 
 const STATE_TTL_SECONDS = 60 * 10;
 const back_url=process.env.BACK_URL
