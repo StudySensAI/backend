@@ -1,16 +1,23 @@
-{
+﻿{
   "compilerOptions": {
-    "module": "esnext",
-    "target": "es2020",
+    "target": "ES2020",
+    "module": "ES2020",
+    "moduleResolution": "bundler",
 
-    "moduleResolution": "bundler",   // ⭐ REQUIRED for LangChain v0.3+
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-
-    "resolveJsonModule": true,
-    "skipLibCheck": true,            // ⭐ Avoids .d.ts constraint errors
+    "outDir": "./dist",
+    "rootDir": "./",
 
     "strict": true,
-    "noEmit": true
-  }
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "allowImportingTsExtensions": false,
+
+    "sourceMap": true,
+    "noEmit": false
+  },
+
+  "include": ["./**/*.ts"],
+  "exclude": ["node_modules", "dist"]
 }

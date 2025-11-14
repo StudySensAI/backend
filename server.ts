@@ -1,5 +1,5 @@
 
-import chatRoute from "./routes/chatRoutes";
+import chatRoute from "./routes/chatRoutes.js";
 import { MyOAuthProvider } from "./notion-config/oauth-provider.js";
 import { createClient } from "@supabase/supabase-js";
 import notionStoreRoute from './routes/store-routes.js'
@@ -8,8 +8,8 @@ import express, { Application, Request, Response, NextFunction } from "express";
 import dotenv from "dotenv";
 import cors, { CorsOptions } from "cors";
 import path from "path";
-import uploadRoutes from "./routes/uploadRoutes";
-import dashboardRoutes from "./routes/dashboardRoutes";
+import uploadRoutes from "./routes/uploadRoutes.js";
+import dashboardRoutes from "./routes/dashboardRoutes.js";
 
 dotenv.config();
 

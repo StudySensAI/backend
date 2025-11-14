@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { supabase } from "../supabaseClient";
+import { supabase } from "../supabaseClient.js";
 
 export const deleteUpload = async (req: Request, res: Response) => {
   try {

@@ -1,8 +1,8 @@
 import express from "express";
 import multer from "multer";
-import { uploadPDF } from "../controllers/uploadController";
-import { deleteUpload } from "../controllers/deleteUpload";
-import { generateDownloadUrl } from "../controllers/downloadController";
+import { uploadPDF } from "../controllers/uploadController.js";
+import { deleteUpload } from "../controllers/deleteUpload.js";
+import { generateDownloadUrl } from "../controllers/downloadController.js";
 
 
 const router = express.Router();
