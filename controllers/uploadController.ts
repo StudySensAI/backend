@@ -79,6 +79,8 @@ export const uploadPDF = async (req: Request, res: Response) => {
     return res.status(200).json({
       message: "File uploaded successfully",
       document: insertedDoc,
+      url: fileUrl,   // 👈 REQUIRED
+
     });
 
 
