@@ -162,13 +162,3 @@ app.use("/chat", chatRoute);
 // Start Server
 // ------------------------
 
-app.listen(PORT, async () => {
-  console.log("server is listening to port", PORT)
-  
-    // const notionOAuth = new MyOAuthProvider({
-    //   redirectUrl: REDIRECT_URL,
-    //   scope: "mcp:read mcp:write",
-    //   userId
-    // });
-  
-})
