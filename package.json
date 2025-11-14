@@ -3,20 +3,26 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
+  "type": "module",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only server.ts"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@prisma/client": "^6.19.0",
-    "@supabase/supabase-js": "^2.81.1",
-    "cors": "^2.8.5",
-    "dotenv": "^17.2.3",
+    "@langchain/community": "^1.0.2",
+    "@langchain/core": "^1.0.4",
+    "@langchain/langgraph": "^1.0.1",
+    "@langchain/mcp-adapters": "^1.0.0",
+    "@langchain/openai": "^1.1.0",
+    "@notionhq/client": "^2.2.10",
+    "@ramidecodes/mcp-server-notion": "^1.0.6",
+    "@supabase/supabase-js": "^2.81.0",
+    "dotenv": "^16.4.5",
     "express": "^5.1.0",
-    "multer": "^2.0.2",
-    "path": "^0.12.7",
-    "react": "^19.2.0"
+    "langchain": "^1.0.4",
+    "node-fetch": "^3.3.2",
+    "uuid": "^13.0.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",
