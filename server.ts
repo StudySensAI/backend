@@ -1,3 +1,4 @@
+import pdfChatRoutes from "./routes/pdfChatRoutes.js";
 
 import chatRoute from "./routes/chatRoutes.js";
 import { MyOAuthProvider } from "./notion-config/oauth-provider.js";
@@ -10,7 +11,7 @@ import cors, { CorsOptions } from "cors";
 import path from "path";
 import uploadRoutes from "./routes/uploadRoutes.js";
 import dashboardRoutes from "./routes/dashboardRoutes.js";
-
+import docRoutes from './routes/docRoutes.js'
 dotenv.config();
 
 const app: Application = express();
@@ -31,6 +32,10 @@ app.use(express.json());
 
 app.use("/api/v1/uploads", uploadRoutes);
 app.use("/api/v1/dashboard", dashboardRoutes);
+app.use("/api/v1/rag", docRoutes)
+
+app.use("/chat", pdfChatRoutes);
+
 // app.use("/api/v1/auth", (req: Request, res: Response) => {
 //   res.send("Auth route working");
 // });
