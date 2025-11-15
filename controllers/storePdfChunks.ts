@@ -29,8 +29,12 @@ export const storePdfChunks = async (req: Request, res: Response) => {
     const downloadRes = await fetch(fileUrl);
     const pdfBuffer = Buffer.from(await downloadRes.arrayBuffer());
 
-    const parsed = await pdfParse(pdfBuffer);
+    const parsed = await pdfParse(new Uint8Array(pdfBuffer) as any);
+
     const fullText = parsed.text;
+    console.log("PARSED TEXT LENGTH:", fullText.length);
+console.log("FIRST 500 CHARS:", fullText.slice(0, 500));
+
 
     const splitter = new RecursiveCharacterTextSplitter({
       chunkSize: 800,
@@ -60,7 +64,7 @@ export const storePdfChunks = async (req: Request, res: Response) => {
         document_id: docId,
         user_id: userId,
         chunk_index: i,
-        column: chunkText,
+        content: chunkText,
         embedding: embedding,
       });
     }
