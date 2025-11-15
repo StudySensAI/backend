@@ -6,6 +6,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const router = express.Router();
+console.log("pdfchatroute loaded6")
 
 // --------------------------------------------------
 // Setup Supabase client

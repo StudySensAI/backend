@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 const router = express.Router();
+console.log("pdfchatroute loaded4")
 
 router.post("/query", async (req, res) => {
   try {

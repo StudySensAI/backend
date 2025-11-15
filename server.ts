@@ -203,7 +203,17 @@ app.use("/chat", chatRoute);
 // Start Server
 // ------------------------
 
-
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(` Server running on port ${PORT}`);
+});
+
+// Handle unhandled promise rejections
+process.on("unhandledRejection", (reason, promise) => {
+  console.error("❌ Unhandled Rejection at:", promise, "reason:", reason);
+});
+
+// Handle uncaught exceptions
+process.on("uncaughtException", (error) => {
+  console.error("❌ Uncaught Exception:", error);
+  process.exit(1);
 });

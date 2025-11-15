@@ -10,13 +10,14 @@ const sbUrl = process.env.SUPABASE_URL!;
 const sbKey = process.env.SUPABASE_API_KEY!;
 const client = createClient(sbUrl, sbKey);
 
-const embeddings = new OpenAIEmbeddings({
-  model: "openai/text-embedding-3-large",
-  apiKey: process.env.OPENROUTER_API_KEY!,
-  configuration: { baseURL: "https://openrouter.ai/api/v1" },
-});
-
+// NOTE: create embeddings lazily inside function to avoid top-level throws
 export function createRetrieverForPdf(documentId: string) {
+  const embeddings = new OpenAIEmbeddings({
+    model: "text-embedding-3-large", // 3072-dim model
+    apiKey: process.env.OPENROUTER_API_KEY!,
+    configuration: { baseURL: "https://openrouter.ai/api/v1" },
+  });
+
   const vectorStore = new SupabaseVectorStore(embeddings, {
     client,
     tableName: "pdf_chunks",
@@ -26,3 +27,4 @@ export function createRetrieverForPdf(documentId: string) {
 
   return vectorStore.asRetriever({ k: 5 });
 }
+console.log("📂 loading pdfRetriever");
