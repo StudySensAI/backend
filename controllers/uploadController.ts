@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { supabase } from "../supabaseClient.js";
 import path from "path";
-import pdfParse from "pdf-parse";
+import pdfParse from "pdf-parse/lib/pdf-parse.js";
 import multer from "multer";
 
 export const upload = multer({

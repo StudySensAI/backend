@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { supabase } from "../supabaseClient.js";
-import pdfParse from "pdf-parse";
+import pdfParse from "pdf-parse/lib/pdf-parse.js";
 import OpenAI from "openai";
 import { RecursiveCharacterTextSplitter } from "@langchain/textsplitters";
 console.log("📂 loading storePdfChunks");

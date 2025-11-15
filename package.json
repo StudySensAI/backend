@@ -7,14 +7,11 @@
   "engines": {
     "node": "18.x"
   },
-
-   "scripts": {
-  "build": "tsc",
-  "dev": "nodemon --watch \"./\" --ext ts --ignore dist --exec \"npm run build && node dist/server.js\"",
-  "start": "node dist/server.js"
-}
-
-,
+  "scripts": {
+    "build": "tsc",
+    "dev": "nodemon --watch \"./\" --ext ts --ignore dist --exec \"npm run build && node dist/server.js\"",
+    "start": "node dist/server.js"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -33,6 +30,7 @@
     "node-fetch": "^3.3.2",
     "path": "^0.12.7",
     "pdf-parse": "^1.1.1",
+    "pdfjs-dist": "^5.4.394",
     "react": "^19.2.0",
     "uuid": "^13.0.0"
   },
