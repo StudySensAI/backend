@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { supabase } from "../supabaseClient.js";
 import fs from "fs";
 import path from "path";
-import pdf from "pdf-parse/lib/pdf-parse.js";
+import pdf from "pdf-parse";
 import { log } from "console";
 
 
